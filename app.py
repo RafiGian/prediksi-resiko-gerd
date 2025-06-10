@@ -36,4 +36,5 @@ if st.button("Prediksi"):
     proba = model.predict_proba(input_data)[0][1]  # Probabilitas GERD
 
     st.subheader("Hasil Prediksi")
-    st.write(f"Risiko GERD Anda: **{**
+    st.write(f"Risiko GERD Anda: **{'Tinggi' if pred == 1 else 'Rendah'}**")
+
