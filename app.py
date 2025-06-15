@@ -2,8 +2,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
-from sklearn.ensemble 
-import RandomForestClassifier
 
 # Load model
 with open("model_randomforest_gerd.pkl", "rb") as f:
