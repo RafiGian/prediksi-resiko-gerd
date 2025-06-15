@@ -4,7 +4,7 @@ import numpy as np
 import pickle
 
 # Load model
-with open("model_randomforest_gerd.pkl", "rb") as f:
+with open("model_randomforest_new.pkl", "rb") as f:
     model = pickle.load(f)
 
 # Title and header
