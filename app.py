@@ -2,6 +2,9 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
+with open("model_randomforest_gerd.pkl", "rb") as f:
+    obj = pickle.load(f)
+print(type(obj))
 
 # Load model
 with open("model_randomforest_gerd.pkl", "rb") as f:
