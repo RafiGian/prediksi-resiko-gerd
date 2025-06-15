@@ -34,21 +34,22 @@ status_merokok = st.selectbox("Status Merokok:", options=["Tidak", "Ya"])
 
 # Konversi input ke bentuk DataFrame sesuai model
 def preprocess_input():
-    data = {
-        "usia": usia,
-        "berat_badan": berat_badan,
-        "tinggi_badan": tinggi_badan,
-        "frekuensi_makan": frekuensi_makan,
-        "waktu_makan_malam": 0 if waktu_makan_malam == "< 18.00" else (1 if waktu_makan_malam == "18.00 - 20.00" else 2),
-        "makanan_pedas": int(makanan_pedas),
-        "makanan_asam": int(makanan_asam),
-        "kopi_kafein": int(kopi_kafein),
-        "makanan_berlemak": int(makanan_berlemak),
-        "cokelat": int(cokelat),
-        "minuman_bersoda": int(minuman_berkafein),
-        "merokok": 1 if status_merokok == "Ya" else 0
+    input_dict = {
+        'diet_Omn': 1,
+        'diet_Veg': 0,
+        'diet_Vegt': 0,
+        'fruit_frequency_encoded': frekuensi_makan,
+        'high_fat_red_meat_frequency_enc': int(makanan_berlemak),
+        'homecooked_meals_frequency_enc': 2,
+        'vegetable_frequency_enc': frekuensi_makan,
+        'alcohol_frequency_enc': 1 if status_merokok == "Ya" else 0,
+        'frozen_dessert_frequency_enc': int(cokelat),
+        'milk_cheese_frequency_enc': 1,
+        'one_liter_of_water_a_day_frequency_enc': 2,
+        'salted_snacks_frequency_enc': int(makanan_pedas),
+        'red_meat_frequency_enc': 1
     }
-    return pd.DataFrame([data])
+    return pd.DataFrame([input_dict], columns=model.feature_names_in_)
 
 # Tombol prediksi
 if st.button("🔍 Analisis Risiko GERD"):
